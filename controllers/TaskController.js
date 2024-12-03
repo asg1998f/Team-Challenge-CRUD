@@ -9,6 +9,15 @@ const TaskController = {
             console.error(error);
             res.status(500).send({message: "There was a problem"})
         }
+    },
+    async getAll(req, res) {
+        try {
+           const tasks = await Task.find()
+           res.send({message: "Here you have all your tasks",tasks})
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({message: "There was a problem"})
+        }
     }
 }
 
