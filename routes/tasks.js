@@ -4,5 +4,6 @@ const router = express.Router()
 
 router.post("/create",TaskController.create)
 router.get("/getAll",TaskController.getAll)
+router.get("/id/:_id",TaskController.getById)
 
 module.exports = router
