@@ -40,7 +40,19 @@ const TaskController = {
             console.error(error);
             res.status(500).send({message: "There was a problem"})
         }
-    }
+    },
+    async update(req, res) {
+        try {
+          const task = await Task.findByIdAndUpdate(
+            req.params._id, 
+            req.body,
+            { new: true }
+        )
+          res.send({ message: "Task successfully updated", task });
+        } catch (error) {
+          console.error(error);
+        }
+      },
 }
 
 module.exports = TaskController

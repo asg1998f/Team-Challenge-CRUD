@@ -6,5 +6,6 @@ router.post("/create",TaskController.create)
 router.get("/getAll",TaskController.getAll)
 router.get("/id/:_id",TaskController.getById)
 router.get("/getByTitle/:title",TaskController.getTasksByTitle)
+router.put("/id/:_id",TaskController.update)
 
 module.exports = router
