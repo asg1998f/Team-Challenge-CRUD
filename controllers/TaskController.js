@@ -28,6 +28,19 @@ const TaskController = {
             res.status(500).send({message: "There was a problem"})
         }
     },
+    async getTasksByTitle(req,res) {
+        try {
+            const tasks = await Task.find({
+                $text:{
+                    $search: req.params.title,
+                },
+            })
+            res.send({message: "Here you have your title task",tasks})
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({message: "There was a problem"})
+        }
+    }
 }
 
 module.exports = TaskController
