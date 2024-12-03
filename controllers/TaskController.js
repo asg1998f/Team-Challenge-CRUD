@@ -53,6 +53,15 @@ const TaskController = {
           console.error(error);
         }
       },
+    async delete(req,res){
+        try {
+            const task = await Task.findByIdAndDelete(req.params._id)
+            res.send({ message: 'Task deleted', task })
+        } catch (error) {
+            console.error(error)
+            res.status(500).send({ message: 'There was a problem trying to remove the task'})
+        }
+    }
 }
 
 module.exports = TaskController
